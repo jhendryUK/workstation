@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# If we in PS or MH set the proxy
+ip route | egrep '^default' | awk '{print $3}' | egrep -q '10.0.[238]|10.1.[2345]'
+if [ $? == 0 ]; then
+    echo "Configuring proxy settings"
+    
+    proxy=http://proxy:3128/
+    ftp_proxy=$proxy
+    http_proxy=$proxy
+    https_proxt=$proxy
+    
+    export proxy
+    export ftp_proxy
+    export http_proxy
+    export https_proxy
+fi
+

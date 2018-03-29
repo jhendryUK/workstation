@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [ $UID -ne 0 ]; then
+    sudo "$0" $@
+    exit 0
+fi
+
+# prep
+apt-get update
+apt-get -y upgrade
+apt-get -y autoremove
+
+# required for i3 setup
+apt-get install -y i3 i3blocks scrot imagemagick xautolock rofi udiskie arandr
+
+# personal pkgs
+apt-get install -y vim iftop nmap ipcalc openssh-server wireshark keychain git whois subversion fping dia minicom snmp net-tools vlc ipv6calc
+
+# work packages
+apt-get install -y python-pip virtualenv libyaml-perl ldapscripts libnet-ldap-perl libyaml-perl diffstat fabric expect socat graphviz openjdk-8-jre icedtea-8-plugin linphone
+
+# work gpg
+# http://wiki.mintel.co.uk/?title=InfraTeamGPG/SystemsRequirements
+apt-get install -y gpgv2 haveged ssss pcsc-tools pcscd yubikey-personalization yubikey-personalization-gui scdaemon pass tree qtpass python3-gnupg
+
+# rubbish
+apt-get install -y cowsay cowsay-off fortune fortunes-off
+
+# stupid interactive ferm install
+apt-get install ferm
+
+echo "Finished..."

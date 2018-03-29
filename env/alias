@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+
+alias gpg=`which gpg2`
+alias catconf="sed -e '/^[[:space:]]*#/d' -e '/^[[:space:]]*$/d'"
+#alias cfe='cd ~/svn/cfengine && svn up ./*'
+alias cfe='~/bin/cfe.pl '
+alias cfgrep='~/bin/cfgrep '
+alias cffind='~/bin/cffind '
+alias clean_gpg_stubs='killall gpg-agent ; rm -fv ~/.gnupg/private-keys-v1.d/*.key ; gpg2 --card-status'
+alias checkGlobalGroups='~/bin/check-global-groups.pl checkconfig'
+alias connect_drac='/bin/ls -1t ~/Downloads/viewer*.jnlp* ~/Downloads/vkvm*.jnlp* 2>/dev/null | head -n1 | xargs -I{} -t javaws "{}"'
+#alias createBridges='sudo /bin/bash /home/jhendry/bin/create-bridges '
+#alias fwb='/home/jhendry/bin/fwbuilder'
+#alias ls='ls --color -lhF'
+#alias nmblookup='nmblookup -R -U 10.0.0.11'
+#alias ns='netstat -n -l -4'
+#alias ps='ps axco pid,state,jid,command,user'
+alias vnc='xvncviewer -AutoSelect=0 -LowColourLevel=1 -PreferredEncoding="ZRLE" -Shared=1'
+#alias vnc='xvncviewer -encodings tight  -compresslevel 9 -quality 4'
+#alias zombies='sudo \pstree | fgrep -B1 "<defunct>" | head -n1 | sed -e "s/^.* \([0-9]*\) .*$/\1/g" | xargs -L1 -P1 ps co pid,command,jid -p'
+alias disableTouchPad='xinput --set-prop "AlpsPS/2 ALPS DualPoint TouchPad" "Device Enabled" 0'
+alias enableTouchPad='xinput --set-prop "AlpsPS/2 ALPS DualPoint TouchPad" "Device Enabled" 1'
+alias cssh='ssh -o PubkeyAuthentication=no -l root $*'
+alias vssh='ssh -o PubkeyAuthentication=no -l vyos $*'
+alias assh='ssh -o PubkeyAuthentication=no -l admin $*'
+alias screenshot='scrot -s --silent /tmp/selected-screenshot.png'
+
+alias single='~/.screenlayout/single-display.sh'
+alias dual='~/.screenlayout/dual-display.sh'
+alias reset_monitors='single && dual'
+alias personal_pass='PASSWORD_STORE_DIR=/home/jhendry/secrets && export PASSWORD_STORE_DIR'
+
+
+#ALIASES_IGNORE="^\s*$|cfengine$|^[cf|e|f|svn]*grep$|cffind|^ls$|^win_access$|^zombies$|^alert$|^ns$|^ss$|^ssh_|^tcp$|^watchlogs$|^[a|c|v]ssh$|^l$|^l[a|l]$|^\s*$"
+#fwb_MSG="Launch Firewall Builder"
+ALIASES_IGNORE="^\s*$|^alert$|^[a|c|v]ssh$|^cfgrep$|^cffind$|^grep$|^[e|f]grep|^l$|^l[a|l|s]$|^checkGlobalGroups$|single|dual|^gpg|^\s*$"
+cfe_MSG="Update svn repos with magic"
+checkGlobalGroups_MSG="Check Global AD groups against local list"
+connect_drac_MSG="Connect to the most recent viewer.jnlp"
+disableTouchPad_MSG="Disable TouchPad"
+enableTouchPad_MSG="Enable TouchPad"
+vnc_MSG="256 colours, fastest compression, Shared enabled"
+reset_monitors_MSG="Fix broken dual screen setup"
+personal_pass_MSG="Environment for personal pass usage"
+#zombies_MSG="*BSD* list the parent of a family of zombies"
+
+ALIASES_IGNORE="\${$ALIASES_IGNORE=-"^\s*$"}"
+echo
+echo "Aliases:"
+echo
+for i in `alias | awk -F "=" '{print $1}' | sed -e 's/^alias //g' | egrep -v "$ALIASES_IGNORE"`
+    do
+    eval MSG="\${"${i}_MSG":-`alias $i | sed -e "s/^alias $i=//g"`}" 2> /dev/null
+    ALIASES_NAME=`printf "%16s" $i`
+    echo "$ALIASES_NAME = $MSG"
+done
+echo
+

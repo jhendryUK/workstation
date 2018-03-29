@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+configs=()
+configs+=('alias')
+configs+=('misc')
+configs+=('proxy')
+configs+=('gpg')
+
+for config in "${configs[@]}"; do
+	. ~/.config/hendry/env/$config
+done
+
+# Lets have some fun!
+~/.config/hendry/workstation/env/fun.py

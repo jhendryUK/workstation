@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+EDITOR=vim
+PAGER=less
+LDAP_DN="cn=Jason Hendry,ou=London,ou=People,o=Mintel"
+CF2_WC_PATH=~/svn/cfengine/cf2
+PASSWORD_STORE_DIR=~/svn/cfengine/infra/secret-store-v1/
+PATH="$PATH:/home/jhendry/bin"
+
+
+BLUE=`tput setf 1`
+GREEN=`tput setf 2`
+CYAN=`tput setf 3`
+RED=`tput setf 4`
+MAGENTA=`tput setf 5`
+YELLOW=`tput setf 6`
+WHITE=`tput setf 7`
+PS1='\[$GREEN\]\u\[$WHITE\]@\[$YELLOW\]\h \[$CYAN\]\w/\[$RED\] \$\[$WHITE\] '
+
+
+export EDITOR
+export PAGER EDITOR
+export LDAP_DN
+export CF2_WC_PATH
+export PASSWORD_STORE_DIR
+export PATH
+
+
+export BLUE
+export GREEN
+export CYAN
+export RED
+export MAGENTA
+export YELLOW
+export WHITE
+export PS1
