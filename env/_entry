@@ -5,11 +5,12 @@ configs+=('alias')
 configs+=('misc')
 configs+=('proxy')
 configs+=('gpg')
-env_root=~/.config/hendry/workstation/env
+root=~/.config/hendry/workstation
+env_root=${root}/env
 
 for config in "${configs[@]}"; do
 	. $env_root/$config
 done
 
 # Lets have some fun!
-$env_root/fun.py
+${root}/scripts/fun.py

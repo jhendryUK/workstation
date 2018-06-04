@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+file=`mktemp -p ~/Downloads`
+vim $file
+[[ `stat -c %s $file` == 0 ]] && rm -f $file

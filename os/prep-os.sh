@@ -19,7 +19,13 @@ service sttemd-resolved stop
 
 # disable stupid default daemons
 for i in avahi-daemon avahi-dnsconfd apparmor cups cups-browsed saned; do
-    update-rc.d -f $i remove
+    if [ -e /etc/init.d/$i ]; then
+        /etc/init.d/$i stop
+    fi
+    systemctl disable $i.service
+    if [ $? != 0 ]; then
+        update-rc.d -f $i remove
+    fi
 done
 
 # Stop popularity contest from working

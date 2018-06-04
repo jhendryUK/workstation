@@ -34,3 +34,29 @@ export MAGENTA
 export YELLOW
 export WHITE
 export PS1
+
+
+function gen_vnc_tunnel () {
+    qemu=`id $USER | grep qemu`
+    sudo=""
+
+    if [ -z $1 ]; then
+        echo "gen_vnc_tunnel <VM Name|VM ID>"
+    else
+        if [ ! "$qemu" ]; then
+            sudo="/usr/bin/sudo"
+        fi
+
+        port=`$sudo virsh vncdisplay $1 | fgrep ':' | awk -F':' '{print \$2}'`
+        if [ "$port" == "" ]; then
+            return
+        elif [ $port -lt 10 ]; then
+            port="590$port"
+        else
+            port="59$port"
+        fi
+        echo ssh -NL $port:localhost:$port $HOSTNAME
+    fi
+}
+
+
