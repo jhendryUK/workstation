@@ -111,7 +111,7 @@ exec xautolock -time 5 -notify 30 -secure -notifier "notify-send -u normal -c --
 exec_always nm-applet
 exec_always compton -f
 exec pasystray
-exec start-pulseaudio-x11
+#exec start-pulseaudio-x11
 exec sudo udiskie -s -F &
 
 # screenshot

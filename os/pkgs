@@ -16,7 +16,7 @@ apt-get -y autoremove
 # apt-get -y autoremove ; apt-get update ; apt-get -y upgrade ; apt-get -y autoremove
 
 # required for i3 setup
-apt-get install -y i3 i3blocks scrot imagemagick xautolock rofi udiskie arandr
+apt-get install -y i3 i3blocks scrot imagemagick xautolock rofi udiskie arandr pavucontrol pasystray
 
 # personal pkgs
 apt-get install -y vim iftop nmap ipcalc openssh-server wireshark keychain git whois subversion fping dia minicom snmp net-tools vlc ipv6calc dstat virt-manager ssh-askpass tmux x2goclient ipset synergy htop
