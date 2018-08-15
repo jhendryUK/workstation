@@ -1,0 +1,12 @@
+set expandtab       "replace <Tab> with spaces
+set smarttab        "better behaviour when you type <Tab>
+set ts=4            "set tabstop to 4 chars
+set sw=4            "set shiftwidth (size of indentation) to 4 chars
+set ai              "autoindent
+set sm              "show mode in bottom line of screen
+set bs=2            "make <BS> key more powerful
+set ruler           "show screen position
+
+if &diff
+    set t_Co=16     " set to 16 colors
+endif

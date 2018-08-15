@@ -23,7 +23,7 @@ alias enableTouchPad='xinput --set-prop "AlpsPS/2 ALPS DualPoint TouchPad" "Devi
 alias cssh='ssh -o PubkeyAuthentication=no -l root $*'
 alias vssh='ssh -o PubkeyAuthentication=no -l vyos $*'
 alias assh='ssh -o PubkeyAuthentication=no -l admin $*'
-alias screenshot='scrot -s --silent /tmp/selected-screenshot.png'
+alias screenshot='scrot -s --silent /tmp/selected-screenshot.png && eom /tmp/selected-screenshot.png'
 
 alias single='~/.screenlayout/single-display.sh'
 alias dual='~/.screenlayout/dual-display.sh'

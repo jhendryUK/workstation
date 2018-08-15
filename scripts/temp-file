@@ -2,4 +2,8 @@
 
 file=`mktemp -p ~/Downloads`
 vim $file
-[[ `stat -c %s $file` == 0 ]] && rm -f $file
+if [ `stat -c %s $file` == 0 ]; then
+    rm -f $file
+else
+    echo "Wrote file: $file"  
+fi

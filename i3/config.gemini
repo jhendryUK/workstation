@@ -1,0 +1,140 @@
+# i3 config file (v4)
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+
+set $mod Mod4
+set $pixle_mangle 3
+set $config_root /home/jhendry/.config/i3
+set $terminal_emulator /usr/bin/mate-terminal.wrapper
+
+font pango:System San Francisco Display 10
+
+floating_modifier $mod
+
+# start rofi (a program launcher)
+set $base01 #1f222d
+set $base02 #252936
+set $base05 #d1d4e0
+set $base07 #ffffff
+bindsym $mod+d exec rofi -show run -lines 5 -eh 2  -width 100 -padding 100 -opacity "85" -bw 0 -bc "$base01" -bg "$base02" -fg "$base07" -hlbg "$base05" -columns 2 -font "System San Francisco Display 10" -hlfg "#9575cd" -padding 250
+
+# move focus
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# move window
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+y layout stacking
+bindsym $mod+u layout tabbed
+bindsym $mod+i layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+space floating toggle
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        bindsym Left resize shrink width $pixle_mangle px or $pixle_mangle ppt
+        bindsym Down resize grow height $pixle_mangle px or $pixle_mangle ppt
+        bindsym Up resize shrink height $pixle_mangle px or $pixle_mangle ppt
+        bindsym Right resize grow width $pixle_mangle px or $pixle_mangle ppt
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+        status_command i3blocks -c /etc/i3blocks.conf
+        tray_output primary
+}
+
+# split in horizontal orientation
+bindsym $mod+h split h
+
+# split in vertical orientation
+bindsym $mod+v split v
+
+# make window sticky
+bindsym $mod+s sticky toggle
+
+# lock screen
+bindsym $mod+l exec $config_root/screenlock.sh
+exec xautolock -time 5 -notify 30 -secure -notifier "notify-send -u normal -c -- ScreenLock -t 30000 -- \"Locking screen in 30 seconds\"" -locker $config_root/screenlock.sh &
+
+# start apps
+exec_always nm-applet
+exec_always compton -f
+exec pasystray
+#exec start-pulseaudio-x11
+exec sudo udiskie -s -F &
+
+# screenshot
+# Does not work :(
+#bindsym $mod+s exec scrot -s --silent /tmp/selected-screenshot.png
+
+# kill focused window
+bindsym $mod+q kill
+
+# execute apps
+bindsym $mod+n exec pluma
+bindsym $mod+g exec google-chrome
+bindsym XF86HomePage exec google-chrome
+bindsym $mod+Return exec $terminal_emulator
+
+# use xev to find key names
+bindsym $mod+bracketright split h; exec $terminal_emulator
+bindsym $mod+numbersign split v; exec $terminal_emulator
+
+# mute laptop speakers
+bindsym XF86AudioMute exec $config_root/manage_volume.sh toggle_sound
+bindsym $mod+XF86AudioMute exec $config_root/manage_volume.sh toggle_mic
+
+# manage all volume levels
+bindsym XF86AudioRaiseVolume exec $config_root/manage_volume.sh higher
+bindsym XF86AudioLowerVolume exec $config_root/manage_volume.sh lower

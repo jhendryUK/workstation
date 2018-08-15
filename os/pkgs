@@ -19,7 +19,7 @@ apt-get -y autoremove
 apt-get install -y i3 i3blocks scrot imagemagick xautolock rofi udiskie arandr pavucontrol pasystray
 
 # personal pkgs
-apt-get install -y vim iftop nmap ipcalc openssh-server wireshark keychain git whois subversion fping dia minicom snmp net-tools vlc ipv6calc dstat virt-manager ssh-askpass tmux x2goclient ipset synergy htop
+apt-get install -y vim iftop nmap ipcalc openssh-server wireshark keychain git whois subversion fping dia minicom snmp net-tools vlc ipv6calc dstat virt-manager ssh-askpass tmux x2goclient ipset synergy htop docker.io nfs-common
 
 # work packages
 apt-get install -y python-pip virtualenv libyaml-perl ldapscripts libnet-ldap-perl libyaml-perl diffstat fabric expect socat graphviz openjdk-8-jre icedtea-8-plugin linphone ocsinventory-agent csh
