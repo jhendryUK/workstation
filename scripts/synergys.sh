@@ -6,13 +6,13 @@ killall synergys
 
 pid=`ps -ax -o pid,command | egrep -- 'ssh -fNR .* 10.255.253.50' | grep -v grep | awk '{print $1}' | tr '\n' ' '`
 if [ "$pid" ]; then
-    echo "Killing reverse port-forward ssh sessions ($pid)"
+    echo "Killing reverse port-forward ssh sessions ( $pid)"
     for i in $pid; do
         kill $i
     done
 fi
 
-set -x
+set -e
 
 echo Starting Synergys
 /usr/bin/synergys -f --debug INFO --name twigz -c ~/.config/synergy/config --address 127.0.0.1:24800 &
