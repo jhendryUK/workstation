@@ -5,7 +5,7 @@ PAGER=less
 LDAP_DN="cn=Jason Hendry,ou=London,ou=People,o=Mintel"
 CF2_WC_PATH=~/svn/cfengine/cf2
 PASSWORD_STORE_DIR=~/svn/cfengine/infra/secret-store-v1/
-PATH="$PATH:/home/jhendry/bin"
+PATH="$PATH:/home/jhendry/bin:/home/jhendry/.config/hendry/workstation/scripts"
 
 
 BLUE=`tput setf 1`

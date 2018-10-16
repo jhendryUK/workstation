@@ -20,10 +20,10 @@ pkgs=""
 pkgs+=" i3 i3blocks scrot imagemagick xautolock rofi udiskie arandr pavucontrol pasystray"
 
 # personal pkgs
-pkgs+=" vim iftop nmap ipcalc openssh-server keychain git whois subversion fping dia minicom snmp net-tools vlc ipv6calc dstat ssh-askpass tmux x2goclient ipset synergy htop"
+pkgs+=" vim iftop nmap ipcalc openssh-server keychain git whois subversion fping dia minicom snmp net-tools vlc ipv6calc dstat ssh-askpass tmux x2goclient ipset synergy htop telnet"
 
 # work packages
-pkgs+=" python-pip virtualenv libyaml-perl ldapscripts libnet-ldap-perl libyaml-perl diffstat fabric expect socat graphviz csh"
+pkgs+=" python-pip virtualenv libyaml-perl ldapscripts libnet-ldap-perl libyaml-perl diffstat fabric expect socat graphviz csh dirmngr"
 #pkgs+=" python-pip virtualenv libyaml-perl ldapscripts libnet-ldap-perl libyaml-perl diffstat fabric expect socat graphviz openjdk-8-jre icedtea-8-plugin csh"
 
 # work gpg

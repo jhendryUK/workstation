@@ -19,14 +19,14 @@ apt-get -y autoremove
 apt-get install -y i3 i3blocks scrot imagemagick xautolock rofi udiskie arandr pavucontrol pasystray
 
 # personal pkgs
-apt-get install -y vim iftop nmap ipcalc openssh-server wireshark keychain git whois subversion fping dia minicom snmp net-tools vlc ipv6calc dstat virt-manager ssh-askpass tmux x2goclient ipset synergy htop docker.io nfs-common
+apt-get install -y vim iftop nmap ipcalc openssh-server wireshark keychain git whois subversion fping dia minicom snmp net-tools vlc ipv6calc dstat virt-manager ssh-askpass tmux x2goclient ipset synergy htop docker.io nfs-common telnet vlan
 
 # work packages
 apt-get install -y python-pip virtualenv libyaml-perl ldapscripts libnet-ldap-perl libyaml-perl diffstat fabric expect socat graphviz openjdk-8-jre icedtea-8-plugin linphone ocsinventory-agent csh
 
 # work gpg
 # http://wiki.mintel.co.uk/?title=InfraTeamGPG/SystemsRequirements
-apt-get install -y gpgv2 haveged ssss yubikey-personalization yubikey-personalization-gui scdaemon pass tree qtpass python3-gnupg
+apt-get install -y gpgv2 haveged ssss yubikey-personalization yubikey-personalization-gui scdaemon pass tree qtpass python3-gnupg signing-party dirmngr
 #removed: pcscd pcsc-tools
 
 # fun.py - profile login msg
