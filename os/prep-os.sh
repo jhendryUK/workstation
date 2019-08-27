@@ -15,7 +15,7 @@ cd $(realpath `dirname $0`/..)
 # Ubuntu 18.04 LTS
 sed -i -e 's/dns=.*/dns=default/g' /etc/NetworkManager/NetworkManager.conf
 systemctl  disable systemd-resolved.service
-service sttemd-resolved stop
+service systemd-resolved stop
 
 # disable stupid default daemons
 for i in avahi-daemon avahi-dnsconfd apparmor cups cups-browsed saned; do
